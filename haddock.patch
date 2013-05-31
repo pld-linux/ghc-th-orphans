@@ -1,0 +1,30 @@
+--- th-orphans-0.6/src/Language/Haskell/TH/Instances.hs.orig	2013-05-31 22:14:01.155238298 +0200
++++ th-orphans-0.6/src/Language/Haskell/TH/Instances.hs	2013-05-31 22:16:41.706978731 +0200
+@@ -2,17 +2,17 @@
+ {-# LANGUAGE StandaloneDeriving, TemplateHaskell #-}
+ {-# LANGUAGE TypeSynonymInstances #-}
+ 
+-{- |
+-  Module      :  Language.Haskell.TH.Instances.Lift
+-  Copyright   :  (c) Matt Morrow 2008
+-  License     :  BSD3
+-  Maintainer  :  Michael Sloan <mgsloan at gmail>
+-  Stability   :  experimental
+-  Portability :  portable (template-haskell)
+--}
++-- |
++--  Module      :  Language.Haskell.TH.Instances.Lift
++--  Copyright   :  (c) Matt Morrow 2008
++--  License     :  BSD3
++--  Maintainer  :  Michael Sloan <mgsloan at gmail>
++--  Stability   :  experimental
++--  Portability :  portable (template-haskell)
++--
++-- Provides Ord and Lift instances for the TH datatypes.
++-- Also provides Show  Eq for Loc, and Ppr for Loc  Lit.
+ 
+--- | Provides Ord and Lift instances for the TH datatypes.  Also provides
+---   Show / Eq for Loc, and Ppr for Loc / Lit.
+ module Language.Haskell.TH.Instances () where
+ 
+ import Language.Haskell.TH.Syntax
