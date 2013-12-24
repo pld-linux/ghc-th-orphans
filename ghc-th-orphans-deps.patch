@@ -1,0 +1,11 @@
+--- th-orphans-0.8/th-orphans.cabal.orig	2013-10-15 09:37:53.000000000 +0200
++++ th-orphans-0.8/th-orphans.cabal	2013-12-24 08:08:26.469392370 +0100
+@@ -20,7 +20,7 @@
+ 
+ library
+   build-depends:   base >= 4.2 && < 4.8,
+-                   th-lift == 0.5.*
++                   th-lift >= 0.5 && < 0.7
+ 
+   if impl(ghc >= 7.4)
+     Build-depends: template-haskell >= 2.7 && < 2.10
