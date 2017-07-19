@@ -6,41 +6,45 @@
 Summary:	Orphan instances for TH datatypes
 Summary(pl.UTF-8):	Osierocone instancje typów danych TH
 Name:		ghc-%{pkgname}
-Version:	0.8
+Version:	0.13.3
 Release:	1
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/th-orphans
 Source0:	http://hackage.haskell.org/package/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	a2de789100ad8d7e5be157b9cd4255d5
-Patch0:		haddock.patch
-Patch1:		%{name}-deps.patch
+# Source0-md5:	d56c8222885e82e47076a27224fd4ced
 URL:		http://hackage.haskell.org/package/th-orphans
 BuildRequires:	ghc >= 6.12.3
-BuildRequires:	ghc-base >= 4.2
-BuildRequires:	ghc-base < 4.8
-BuildRequires:	ghc-template-haskell >= 2.4
-BuildRequires:	ghc-template-haskell < 2.10
-BuildRequires:	ghc-th-lift >= 0.5
-BuildRequires:	ghc-th-lift < 0.7
+BuildRequires:	ghc-base >= 4.3
+BuildRequires:	ghc-base < 5
+BuildRequires:	ghc-generic-deriving >= 1.9
+BuildRequires:	ghc-template-haskell
+BuildRequires:	ghc-th-lift >= 0.7.1
+BuildRequires:	ghc-th-lift-instances
+BuildRequires:	ghc-th-reify-many >= 0.1
+BuildRequires:	ghc-th-reify-many < 0.2
 %if %{with prof}
+BuildRequires:	ghc-base-prof >= 4.3
+BuildRequires:	ghc-base-prof < 5
+BuildRequires:	ghc-generic-deriving-prof >= 1.9
 BuildRequires:	ghc-prof >= 6.12.3
-BuildRequires:	ghc-base-prof >= 4.2
-BuildRequires:	ghc-base-prof < 4.8
-BuildRequires:	ghc-template-haskell-prof >= 2.4
-BuildRequires:	ghc-template-haskell-prof < 2.10
-BuildRequires:	ghc-th-lift-prof >= 0.5
-BuildRequires:	ghc-th-lift-prof < 0.7
+BuildRequires:	ghc-template-haskell-prof
+BuildRequires:	ghc-th-lift-instances-prof
+BuildRequires:	ghc-th-lift-prof >= 0.7.1
+BuildRequires:	ghc-th-reify-many-prof >= 0.1
+BuildRequires:	ghc-th-reify-many-prof < 0.2
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_releq	ghc
 Requires(post,postun):	/usr/bin/ghc-pkg
-Requires:	ghc-base >= 4.2
-Requires:	ghc-base < 4.8
-Requires:	ghc-template-haskell >= 2.4
-Requires:	ghc-template-haskell < 2.10
-Requires:	ghc-th-lift >= 0.5
-Requires:	ghc-th-lift < 0.7
+Requires:	ghc-base >= 4.3
+Requires:	ghc-base < 5
+Requires:	ghc-generic-deriving >= 1.9
+Requires:	ghc-template-haskell
+Requires:	ghc-th-lift >= 0.7.1
+Requires:	ghc-th-lift-instances
+Requires:	ghc-th-reify-many >= 0.1
+Requires:	ghc-th-reify-many < 0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # debuginfo is not useful for ghc
@@ -64,12 +68,14 @@ Summary:	Profiling %{pkgname} library for GHC
 Summary(pl.UTF-8):	Biblioteka profilująca %{pkgname} dla GHC.
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ghc-base-prof >= 4.2
-Requires:	ghc-base-prof < 4.8
-Requires:	ghc-template-haskell-prof >= 2.4
-Requires:	ghc-template-haskell-prof < 2.10
-Requires:	ghc-th-lift-prof >= 0.5
-Requires:	ghc-th-lift-prof < 0.7
+Requires:	ghc-base-prof >= 4.3
+Requires:	ghc-base-prof < 5
+Requires:	ghc-generic-deriving-prof >= 1.9
+Requires:	ghc-template-haskell-prof
+Requires:	ghc-th-lift-instances-prof
+Requires:	ghc-th-lift-prof >= 0.7.1
+Requires:	ghc-th-reify-many-prof >= 0.1
+Requires:	ghc-th-reify-many-prof < 0.2
 
 %description prof
 Profiling %{pkgname} library for GHC.  Should be installed when
@@ -81,8 +87,6 @@ kiedy potrzebujemy systemu profilującego z GHC.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 runhaskell Setup.hs configure -v2 \
