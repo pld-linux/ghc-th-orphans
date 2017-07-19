@@ -7,7 +7,7 @@ Summary:	Orphan instances for TH datatypes
 Summary(pl.UTF-8):	Osierocone instancje typów danych TH
 Name:		ghc-%{pkgname}
 Version:	0.13.3
-Release:	1
+Release:	0.1
 License:	BSD
 Group:		Development/Languages
 #Source0Download: http://hackage.haskell.org/package/th-orphans
