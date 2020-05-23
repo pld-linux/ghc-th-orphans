@@ -35,7 +35,7 @@ BuildRequires:	ghc-th-reify-many-prof >= 0.1
 BuildRequires:	ghc-th-reify-many-prof < 0.2
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.608
-%requires_releq	ghc
+%requires_eq	ghc
 Requires(post,postun):	/usr/bin/ghc-pkg
 Requires:	ghc-base >= 4.3
 Requires:	ghc-base < 5
